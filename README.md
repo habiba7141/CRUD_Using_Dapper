@@ -1,25 +1,26 @@
-This project demonstrates how to build a CRUD (Create, Read, Update, Delete) application using ASP.NET Core Web API and Dapper as a lightweight ORM for database access.
+# 🚀 CRUD Operations with Dapper & ASP.NET Core
 
-📌 Features
+This project is a **CRUD Web API** built using **ASP.NET Core** and **Dapper** as a micro-ORM for high-performance data access.  
+It demonstrates how to manage **Employee records** with Create, Read, Update, and Delete operations.
 
-Create new employees and store them in the database.
+---
 
-Read employees (get all / get by code).
+## ✨ Features
+- 🔹 **Create**: Add new employees to the database.  
+- 🔹 **Read**: Fetch all employees or get a specific one by code.  
+- 🔹 **Update**: Modify employee details by code.  
+- 🔹 **Delete**: Remove employees from the system.  
+- 🔹 Built with **Dapper** for lightweight and efficient database queries.  
+- 🔹 RESTful API with **Swagger** for documentation.  
 
-Update employee details.
+---
 
-Delete employees by code.
+## 🛠️ Tech Stack
+- **ASP.NET Core 8** → Web API  
+- **Dapper** → Micro ORM  
+- **SQL Server** → Database  
+- **Swagger / Swashbuckle** → API testing & documentation  
 
-Uses Dapper for fast and efficient data access.
 
-RESTful API endpoints with Swagger integration.
 
-🛠️ Technologies Used
 
-ASP.NET Core 8 (Web API)
-
-Dapper (Micro ORM)
-
-SQL Server (Database)
-
-Swagger / Swashbuckle (API Documentation)
