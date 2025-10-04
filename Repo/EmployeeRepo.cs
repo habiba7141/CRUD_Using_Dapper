@@ -147,7 +147,7 @@ namespace CRUDUsingDapper.Repo
                     {
                         transaction.Rollback();
                         Console.WriteLine($"❌ Transaction failed: {ex.Message}");
-                        throw; // 👈 علشان نعرف الخطأ في Swagger أو Postman
+                        throw; 
                     }
 
                 }

@@ -81,7 +81,7 @@ namespace CRUDUsingDapper.Controllers
             }
             catch (Exception ex)
             {
-                // نرجع الرسالة الحقيقية عشان نعرف فين الخطأ
+               
                 return BadRequest($"❌ Transaction failed: {ex.Message}");
             }
         }
