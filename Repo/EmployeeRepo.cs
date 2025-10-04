@@ -145,11 +145,11 @@ namespace CRUDUsingDapper.Repo
                     }
                     catch (Exception ex)
                     {
-                        
                         transaction.Rollback();
-                        Console.WriteLine($"Transaction Failed: {ex.Message}");
-                        return false;
+                        Console.WriteLine($"❌ Transaction failed: {ex.Message}");
+                        throw; // 👈 علشان نعرف الخطأ في Swagger أو Postman
                     }
+
                 }
             }
         }

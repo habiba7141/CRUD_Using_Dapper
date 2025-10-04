@@ -7,6 +7,7 @@
         public string email { get; set; }
         public string phone { get; set; }
         public string designation { get; set; }
+        public int CompanyId {  get; set; } 
 
     }
 }

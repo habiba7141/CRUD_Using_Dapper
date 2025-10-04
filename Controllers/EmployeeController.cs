@@ -72,10 +72,18 @@ namespace CRUDUsingDapper.Controllers
         [HttpPost("AddMultiple")]
         public async Task<IActionResult> AddMultiple([FromBody] List<Employee> employees)
         {
-            bool result = await repo.AddMultipleEmployeesAsync(employees);
-            if (result)
-                return Ok("✅ All employees added successfully!");
-            return BadRequest("❌ Transaction failed!");
+            try
+            {
+                bool result = await repo.AddMultipleEmployeesAsync(employees);
+                if (result)
+                    return Ok("✅ All employees added successfully!");
+                return BadRequest("❌ Transaction failed!");
+            }
+            catch (Exception ex)
+            {
+                // نرجع الرسالة الحقيقية عشان نعرف فين الخطأ
+                return BadRequest($"❌ Transaction failed: {ex.Message}");
+            }
         }
     }
 }
