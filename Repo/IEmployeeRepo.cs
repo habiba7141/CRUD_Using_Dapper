@@ -11,5 +11,6 @@ namespace CRUDUsingDapper.Repo
         Task<string> Create(Employee employee);       
         Task<Employee> GetByIdProcedure(int id);
         Task<Company> MultipleQuery(int id);
+        Task<bool> AddMultipleEmployeesAsync(List<Employee> employees);
     }
 }

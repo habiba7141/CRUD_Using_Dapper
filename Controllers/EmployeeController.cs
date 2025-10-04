@@ -69,5 +69,13 @@ namespace CRUDUsingDapper.Controllers
                 return Ok(result);
             return NotFound(result);
         }
+        [HttpPost("AddMultiple")]
+        public async Task<IActionResult> AddMultiple([FromBody] List<Employee> employees)
+        {
+            bool result = await repo.AddMultipleEmployeesAsync(employees);
+            if (result)
+                return Ok("✅ All employees added successfully!");
+            return BadRequest("❌ Transaction failed!");
+        }
     }
 }

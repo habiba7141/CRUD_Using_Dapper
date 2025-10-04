@@ -119,6 +119,41 @@ namespace CRUDUsingDapper.Repo
 
             return response;
         }
+        public async Task<bool> AddMultipleEmployeesAsync(List<Employee> employees)
+        {
+            using (var connection =this.context.CreateConnection())
+            {
+               
+                connection.Open();
+
+              
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = @"INSERT INTO Employees (Name, Email, Phone, Designation, CompanyId)
+                              VALUES (@Name, @Email, @Phone, @Designation, @CompanyId);";
+
+                        foreach (var emp in employees)
+                        {
+                            await connection.ExecuteAsync(query, emp, transaction: transaction);
+                        }
+
+                      
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        
+                        transaction.Rollback();
+                        Console.WriteLine($"Transaction Failed: {ex.Message}");
+                        return false;
+                    }
+                }
+            }
+        }
+
 
     }
 }
