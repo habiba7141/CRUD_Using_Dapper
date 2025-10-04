@@ -1,4 +1,4 @@
-# 🚀 CRUD Operations with Dapper & ASP.NET Core
+# 🚀 Dapper & ASP.NET Core
 
 This project is a **CRUD Web API** built using **ASP.NET Core** and **Dapper** as a micro-ORM for high-performance data access.  
 It demonstrates how to manage **Employee records** with Create, Read, Update, and Delete operations.
