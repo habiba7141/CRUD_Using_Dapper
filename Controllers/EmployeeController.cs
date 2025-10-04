@@ -61,6 +61,13 @@ namespace CRUDUsingDapper.Controllers
                 return Ok(result);
             return NotFound(result);
         }
-
+        [HttpGet("MultipleResult/{id}")]
+        public async Task<IActionResult> GetMultipuleResult(int id)
+        {
+            var result = await repo.MultipleQuery(id);
+            if (result != null)
+                return Ok(result);
+            return NotFound(result);
+        }
     }
 }

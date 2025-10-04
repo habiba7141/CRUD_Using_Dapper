@@ -77,6 +77,22 @@ namespace CRUDUsingDapper.Repo
            
         }
 
+        public async Task<Company> MultipleQuery(int id)
+        {
+            var query = "Select * From Companies Where Id=@Id;" +
+                "Select * From Employees Where CompanyId=@Id;";
+
+            using(var connection = this.context.CreateConnection())
+                using(var multi=await connection.QueryMultipleAsync(query,new {id}))
+            {
+                var company = await multi.ReadSingleOrDefaultAsync<Company>();
+                if(company is not null)
+                    company.Employees=(await multi.ReadAsync<Employee>()).ToList();
+
+                return company;
+            }
+        }
+
         public async Task<string> Update(Employee employee, int code)
         {
             string response = string.Empty;

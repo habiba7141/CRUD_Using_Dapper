@@ -10,5 +10,6 @@ namespace CRUDUsingDapper.Repo
         Task<string> Update(Employee employee,int code);
         Task<string> Create(Employee employee);       
         Task<Employee> GetByIdProcedure(int id);
+        Task<Company> MultipleQuery(int id);
     }
 }
