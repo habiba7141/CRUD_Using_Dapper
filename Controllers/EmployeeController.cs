@@ -53,7 +53,14 @@ namespace CRUDUsingDapper.Controllers
         }
 
 
-
+        [HttpGet("GetEmployeeByIdProcedure/{id}")]
+        public async Task<IActionResult> GetByid(int id)
+        {
+            var result = await repo.GetByIdProcedure(id);
+            if (result != null)
+                return Ok(result);
+            return NotFound(result);
+        }
 
     }
 }

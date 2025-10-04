@@ -1,6 +1,8 @@
-﻿using CRUDUsingDapper.Models;
+﻿using Azure;
+using CRUDUsingDapper.Models;
 using CRUDUsingDapper.Models.Data;
 using Dapper;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 
 namespace CRUDUsingDapper.Repo
@@ -60,6 +62,19 @@ namespace CRUDUsingDapper.Repo
                 var emp = await connection.QueryFirstOrDefaultAsync<Employee>(query, new {code});
                 return emp;
             }
+        }
+        //procedure
+        public async Task<Employee> GetByIdProcedure(int id)
+        {
+            var procedureName = "GetEmployeeById";
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32, ParameterDirection.Input);
+            using (var connection = this.context.CreateConnection())
+            {
+                var Emp= await connection.QueryFirstOrDefaultAsync<Employee>(procedureName, parameters,commandType:CommandType.StoredProcedure);
+                return Emp;
+            }
+           
         }
 
         public async Task<string> Update(Employee employee, int code)
